@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body{
+      margin: 0;
+      padding: 0;
+      background: #34495e;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "montserrat",sans-serif;
+    }
+
+    .loading{
+      width: 200px;
+      height: 200px;
+      box-sizing: border-box;
+      border-radius: 50%;
+      border-top: 10px solid #e74c3c;
+      position: relative;
+      animation: a1 2s linear infinite;
+    }
+
+    .loading::before,.loading::after{
+      content: '';
+      width: 200px;
+      height: 200px;
+      position: absolute;
+      left: 0;
+      top: -10px;
+      box-sizing: border-box;
+      border-radius: 50%;
+    }
+
+    .loading::before{
+      border-top: 10px solid #e67e22;
+      transform: rotate(120deg);
+    }
+
+    .loading::after{
+      border-top: 10px solid #3498db;
+      transform: rotate(240deg);
+    }
+
+    .loading span{
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      color: #fff;
+      text-align: center;
+      line-height: 200px;
+      animation: a2 2s linear infinite;
+    }
+
+    .date {
+      position: absolute;
+      bottom: 30px;
+      right: 16px;
+      font-size: 18px;
+      color: white;
+    }
+
+    .hour {
+      position: absolute;
+      bottom: 8px;
+      right: 16px;
+      font-size: 18px;
+      color: white;
+    }
+
+    @keyframes a1 {
+      to{
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes a2 {
+      to{
+        transform: rotate(-360deg);
+      }
+    }
+
+  </style>
+  <title>Fingerprint - Universitas Pamulang</title>
+</head>
+<body>
+  <div class="loading">
+    <span id="label">Scanning...</span>
+  </div>
+  <div class="date"><span id='date'></span></div>
+  <div class="hour"><span id='hour'></span></div>
+
+
+  <script>
+    setTimeout(function(){ 
+    window.open("/finger", "_top")
+   }, 100);
+
+   setTimeout(function(){ 
+    document.getElementById("label").innerHTML = "Release your Finger."
+  }, 1000);
+
+   setTimeout(function(){ 
+    document.getElementById("label").innerHTML = "Fetching Data..."
+  }, 3000);
+
+  setTimeout(function(){ 
+    document.getElementById("label").innerHTML = "Success Get Data..."
+  }, 6000);
+
+  setTimeout(function(){ 
+    document.getElementById("label").innerHTML = "Displaying Data..."
+  }, 8000);
+
+    //Run function time every seconds
+    setInterval(time, 1000);
+    
+      //Define month names in array
+      const monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni",
+          "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+          
+    //Define day names in array
+      const dayNames = ["Senin", "Selasa", "Rabu", "Kamis", "Jum'at", "Sabtu",
+          "Minggu"];
+
+    var dt = new Date();
+    const month = monthNames[dt.getMonth()];
+    const day = dayNames[dt.getDay()-1];
+    const year = dt.getFullYear();
+    const output = day + ' , ' + dt.getDate() + ' ' + month + ' ' + year
+    var date = document.getElementById('date').innerHTML = output;  
+    
+
+    var hour = document.getElementById('hour');
+    function time() {
+        var d = new Date();
+        var s = d.getSeconds();
+        var m = d.getMinutes();
+        var h = d.getHours();
+        hour.innerHTML = 
+            ("0" + h).substr(-2) + ":" + ("0" + m).substr(-2) + ":" + ("0" + s).substr(-2);
+        }
+  </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Search ID Dosen</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fonts/iconic/css/material-design-iconic-font.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/animate/animate.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/css-hamburgers/hamburgers.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/animsition/css/animsition.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/select2/select2.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/daterangepicker/daterangepicker.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/util.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+<!--===============================================================================================-->
+</head>
+<body>
+
+	{% block content %}
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form" action="/search" method="POST" id="search-form">
+				<center>
+					<h2>Success</h2>
+
+					<img src="{{ url_for('static', filename='image/success.png') }}" alt="">
+
+					<p>The data for <b>{{nama}}</b> successfully Updated</p>
+					<p>This page will close in: <span id="countdown"></span> Seconds.</p>
+
+				</center>
+			</form>
+		</div>
+	</div>
+	{% endblock %}
+<!--===============================================================================================-->
+	<script src="{{ url_for('static', filename='vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for('static', filename='vendor/animsition/js/animsition.min.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for('static', filename='vendor/bootstrap/js/popper.js') }}"></script>
+	<script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for('static', filename='vendor/select2/select2.min.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for('static', filename='vendor/daterangepicker/moment.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='vendor/daterangepicker/daterangepicker.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for('static', filename='vendor/countdowntime/countdowntime.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+
+<script>
+
+	var timeleft = 3;
+	var downloadTimer = setInterval(function(){
+	  if(timeleft <= 0){
+		clearInterval(downloadTimer);
+		window.open("/register", "_top")
+	  } else {
+		document.getElementById("countdown").innerHTML = timeleft;
+	  }
+	  timeleft -= 1;
+	}, 1000);
+  
+	</script>
+</html>
